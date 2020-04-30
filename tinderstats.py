@@ -2,7 +2,7 @@
 
 # Author: Michael Ibeh
 # Title:  tinderstats.py
-# Description: 
+# Description: Get Statistics from downloaded Tinder data
 
 import json
 from datetime import datetime, date
