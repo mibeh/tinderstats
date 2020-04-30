@@ -5,34 +5,10 @@
 # Description: 
 
 import json
-import os
 from datetime import datetime, date
 from tabulate import tabulate
 
-def year(s):
-    return s[:4]
-
 def main():
-
-    currentYear = datetime.now().year
-    first_swipe_day = '20xx'
-    most_recent_swipe_day = ''
-    right_swipes = 0
-    left_swipes = 0
-    matches = 0
-    messages_sent = 0
-    messageReceived = 0
-    app_opens = 0
-
-    most_matches_single_day = 0
-    most_left_single_day = 0
-    most_right_single_day = 0
-    most_messages_single_day = 0
-    most_recieved_single_day = 0
-    most_app_open_single_day = 0
-    right_swipe_percentage = 0
-
-    
 
     # Get data from file
     f = open('data.json', 'r')   
@@ -46,18 +22,22 @@ def main():
     first_swipe_day = list(data["Usage"]["swipes_likes"].keys())[0]
     most_recent_swipe_day = list(data["Usage"]["swipes_likes"].keys())[-1]
     
+    most_right_single_day = 0
+    right_swipes = 0
     for key in data["Usage"]["swipes_likes"]:
         right_swipes += data["Usage"]["swipes_likes"][key]
-        
         if int(data["Usage"]["swipes_likes"][key]) > most_right_single_day:
             most_right_single_day = int(data["Usage"]["swipes_likes"][key])
     
+    most_left_single_day = 0
+    left_swipes = 0
     for key in data["Usage"]["swipes_passes"]:
         left_swipes += data["Usage"]["swipes_passes"][key]
-        
         if int(data["Usage"]["swipes_passes"][key]) > most_left_single_day:
             most_left_single_day = int(data["Usage"]["swipes_passes"][key])
 
+    most_matches_single_day = 0
+    matches = 0
     for key in data["Usage"]["matches"]:
         matches += data["Usage"]["matches"][key]
         if int(data["Usage"]["matches"][key]) > most_matches_single_day:
@@ -70,18 +50,24 @@ def main():
     match_percentage = round(((matches / right_swipes) * 100), 2)
 
     # Messaging Statistics
+    most_messages_single_day = 0
+    messages_sent = 0
     for key in data["Usage"]["messages_sent"]:
         messages_sent += data["Usage"]["messages_sent"][key]
         if int(data["Usage"]["messages_sent"][key]) > most_messages_single_day:
             most_messages_single_day = int(data["Usage"]["messages_sent"][key])
 
+    most_recieved_single_day = 0
+    messages_received = 0
     for key in data["Usage"]["messages_received"]:
-        messageReceived += data["Usage"]["messages_received"][key]
+        messages_received += data["Usage"]["messages_received"][key]
         if int(data["Usage"]["messages_received"][key]) > most_recieved_single_day:
             most_recieved_single_day = int(
                 data["Usage"]["messages_received"][key])
 
     # App Usage Statistics
+    most_app_open_single_day = 0
+    app_opens = 0
     for key in data["Usage"]["app_opens"]:
         app_opens += data["Usage"]["app_opens"][key]
         if int(data["Usage"]["app_opens"][key]) > most_app_open_single_day:
@@ -122,7 +108,7 @@ def main():
     table.append(["Matches to right swipe percentage (%)", match_percentage])
     
     table.append(["Messages sent", messages_sent])
-    table.append(["Messages recieved", messageReceived])
+    table.append(["Messages recieved", messages_received])
     table.append(["Most messages sent in a day", most_messages_single_day])
     table.append(["Most messages recieved in a day", most_recieved_single_day])
 
