@@ -118,7 +118,7 @@ def main():
     table.append(["Average app opens per day", average_app_opens_day])
     table.append(["Most app opens in a day", most_app_open_single_day])
 
-    table.append(["Total time on Tinder", total_days])
+    table.append(["Total days on Tinder", total_days])
     table.append(["Days profile active", active_days])
     table.append(["Days profile deactivated", deactivated_days])
     table.append(["Boosts purchased", num_boosts])
