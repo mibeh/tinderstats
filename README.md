@@ -32,7 +32,7 @@ Most recent day of swiping
 Number of times app opened             
 Average app opens per day              
 Most app opens in a day               
-Total time on Tinder                   
+Total days on Tinder                   
 Days profile active                 
 Days profile deactivated               
 Boosts purchased                       
