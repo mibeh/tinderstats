@@ -57,7 +57,7 @@ def main():
 
     right_swipe_percentage = round(((right_swipes / total_swipes) * 100) , 2)
 
-    match_percentage = round(((matches / right_swipes) * 100), 2)
+    match_percentage = round(((matches / right_swipes) * 100), 3)
 
     # Messaging Statistics
     most_messages_single_day = 0
@@ -103,6 +103,8 @@ def main():
     average_swipes_per_day = round((total_swipes / active_days), 2)
 
     average_app_opens_day = round((app_opens / active_days), 2)
+
+    average_matches_day = round((matches / active_days), 3)
         
     table.append(["Total swipes", total_swipes])
     table.append(["Total right swipes", right_swipes])
@@ -114,6 +116,7 @@ def main():
     table.append(["Total matches", matches])
     table.append(["Most matches in a day", most_matches_single_day])
     table.append(["Longest no match streak", str(no_match_streak) + ' days'])
+    table.append(["Average matches per day", str(average_matches_day) + ' matches'])
     table.append(["Matches to right swipe percentage", str(match_percentage) + '%'])
     table.append(["First day of swiping", '-'.join(start_date)])
     table.append(["Most recent day of swiping", '-'.join(end_date)])

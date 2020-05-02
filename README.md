@@ -24,7 +24,8 @@ Right swipe percentage
 Average daily swipes               
 Total matches                      
 Most matches in a day              
-Longest no match streak            
+Longest no match streak
+Average matches per day            
 Matches to right swipe percentage  
 First day of swiping               
 Most recent day of swiping
