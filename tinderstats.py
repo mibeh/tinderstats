@@ -5,7 +5,7 @@
 # Description: Get Statistics from downloaded Tinder data
 
 import json
-from datetime import datetime, date
+from datetime import date
 from tabulate import tabulate
 
 def main():
