@@ -14,14 +14,11 @@ def main():
     f = open('data.json', 'r')   
     data = json.load(f)
     f.close()
-    
+
     # Used to print values
     table = []
 
     # Get swiping statistics
-    first_swipe_day = list(data["Usage"]["swipes_likes"].keys())[0]
-    most_recent_swipe_day = list(data["Usage"]["swipes_likes"].keys())[-1]
-    
     most_right_single_day = 0
     right_swipes = 0
     for key in data["Usage"]["swipes_likes"]:
@@ -77,9 +74,8 @@ def main():
     for key in data["Usage"]["advertising_id"]:
         active_days += 1
 
-    start_date = first_swipe_day.split('-')
-    end_date = most_recent_swipe_day.split('-')
-
+    start_date = list(data["Usage"]["swipes_likes"].keys())[0].split('-')
+    end_date = list(data["Usage"]["swipes_likes"].keys())[-1].split('-')
     delta = date(int(end_date[0]), int(end_date[1]), int(end_date[2])) - date(int(start_date[0]), int(start_date[1]), int(start_date[2]))
     total_days = int(str(delta.days))
     deactivated_days = total_days - active_days
@@ -102,22 +98,20 @@ def main():
     table.append(["Most left swipes in a day", most_left_single_day])
     table.append(["Right swipe percentage            (%)", right_swipe_percentage])
     table.append(["Average Swipes per day", average_swipes_per_day])
-    
     table.append(["Total matches", matches])
     table.append(["Most matches in a day", most_matches_single_day])
     table.append(["Matches to right swipe percentage (%)", match_percentage])
+    table.append(["First day of swiping", '-'.join(start_date)])
+    table.append(["Most recent day of swiping", '-'.join(end_date)])
     
     table.append(["Messages sent", messages_sent])
     table.append(["Messages recieved", messages_received])
     table.append(["Most messages sent in a day", most_messages_single_day])
     table.append(["Most messages recieved in a day", most_recieved_single_day])
 
-    table.append(["First day of swiping", first_swipe_day])
-    table.append(["Most recent day of swiping", most_recent_swipe_day])
     table.append(["Number of times app opened", app_opens])
     table.append(["Average app opens per day", average_app_opens_day])
     table.append(["Most app opens in a day", most_app_open_single_day])
-
     table.append(["Total days on Tinder", total_days])
     table.append(["Days profile active", active_days])
     table.append(["Days profile deactivated", deactivated_days])
