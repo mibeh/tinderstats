@@ -32,11 +32,24 @@ def main():
         left_swipes += data["Usage"]["swipes_passes"][key]
         if int(data["Usage"]["swipes_passes"][key]) > most_left_single_day:
             most_left_single_day = int(data["Usage"]["swipes_passes"][key])
-
-    most_matches_single_day = 0
+    
     matches = 0
+    most_matches_single_day = 0
+    no_match_count = 0
+    no_match_streak = 0
     for key in data["Usage"]["matches"]:
+        # Raw number of matches
         matches += data["Usage"]["matches"][key]
+        # Start counting number of days with no matches
+        if int(data["Usage"]["matches"][key]) == 0:
+            no_match_count += 1
+        else:
+            # Set new streak if new count is higher
+            if no_match_count > no_match_streak:
+                no_match_streak = no_match_count
+            # Reset streak count after a match
+            no_match_count = 0
+
         if int(data["Usage"]["matches"][key]) > most_matches_single_day:
             most_matches_single_day = int(data["Usage"]["matches"][key])
 
@@ -96,11 +109,12 @@ def main():
     table.append(["Total left swipes", left_swipes])
     table.append(["Most right swipes in a day", most_right_single_day])
     table.append(["Most left swipes in a day", most_left_single_day])
-    table.append(["Right swipe percentage            (%)", right_swipe_percentage])
-    table.append(["Average Swipes per day", average_swipes_per_day])
+    table.append(["Right swipe percentage", str(right_swipe_percentage) + '%'])
+    table.append(["Average daily swipes", str(average_swipes_per_day) + '/day'])
     table.append(["Total matches", matches])
     table.append(["Most matches in a day", most_matches_single_day])
-    table.append(["Matches to right swipe percentage (%)", match_percentage])
+    table.append(["Longest no match streak", str(no_match_streak) + ' days'])
+    table.append(["Matches to right swipe percentage", str(match_percentage) + '%'])
     table.append(["First day of swiping", '-'.join(start_date)])
     table.append(["Most recent day of swiping", '-'.join(end_date)])
     
@@ -112,11 +126,11 @@ def main():
     table.append(["Number of times app opened", app_opens])
     table.append(["Average app opens per day", average_app_opens_day])
     table.append(["Most app opens in a day", most_app_open_single_day])
-    table.append(["Total days on Tinder", total_days])
-    table.append(["Days profile active", active_days])
-    table.append(["Days profile deactivated", deactivated_days])
+    table.append(["Total days on Tinder", str(total_days) + ' days'])
+    table.append(["Days profile active", str(active_days) + ' days'])
+    table.append(["Days profile deactivated", str(deactivated_days) + ' days'])
     table.append(["Boosts purchased", num_boosts])
-    table.append(["Months of Tinder Gold purchased", months_tinder_gold])
+    table.append(["Months of Tinder Gold purchased", str(months_tinder_gold) + ' months'])
 
     print(tabulate(table))
 
