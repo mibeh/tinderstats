@@ -11,30 +11,41 @@ This script is expecting a `data.json` in the same directory it is run from.
 How to run:
 `$ python3 tinderstats.py`
 
-Statistics gathered:
+## Statistics gathered:
+
+Swiping and Matches:
 ```
-Total swipes                           
-Total right swipes                     
-Total left swipes                      
-Most right swipes in a day             
-Most left swipes in a day              
+Total swipes                       
+Total right swipes                 
+Total left swipes                  
+Most right swipes in a day         
+Most left swipes in a day          
 Right swipe percentage             
-Average Swipes per day                 
-Total matches                          
-Most matches in a day                 
-Matches to right swipe percentage 
-Messages sent                          
-Messages recieved                      
-Most messages sent in a day           
-Most messages recieved in a day        
-First day of swiping                  
-Most recent day of swiping             
-Number of times app opened             
-Average app opens per day              
-Most app opens in a day               
-Total days on Tinder                   
-Days profile active                 
-Days profile deactivated               
-Boosts purchased                       
-Months of Tinder Gold purchased
+Average daily swipes               
+Total matches                      
+Most matches in a day              
+Longest no match streak            
+Matches to right swipe percentage  
+First day of swiping               
+Most recent day of swiping
+```
+
+Messaging:
+```         
+Messages sent                      
+Messages recieved                  
+Most messages sent in a day        
+Most messages recieved in a day
+```
+
+App Usage:
+```
+Number of times app opened         
+Average app opens per day          
+Most app opens in a day            
+Total days on Tinder               
+Days profile active                
+Days profile deactivated           
+Boosts purchased                   
+Months of Tinder Gold purchased 
 ```
