@@ -80,8 +80,8 @@ def main():
     start_date = first_swipe_day.split('-')
     end_date = most_recent_swipe_day.split('-')
 
-    delta = date(int(start_date[0]), int(start_date[1]), int(start_date[2])) - date(int(end_date[0]), int(end_date[1]), int(end_date[2]))
-    total_days = int(str(delta.days)[1:])
+    delta = date(int(end_date[0]), int(end_date[1]), int(end_date[2])) - date(int(start_date[0]), int(start_date[1]), int(start_date[2]))
+    total_days = int(str(delta.days))
     deactivated_days = total_days - active_days
 
     # Purchases
